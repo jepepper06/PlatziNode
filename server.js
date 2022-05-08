@@ -5,8 +5,9 @@ const app = express()
 
 var router = express.Router()
 
+app.use(bodyParser.json())
 app.use(router)
-app.use(bodyParser)
+
 
 router.get('/message', function(req,res){
     res.send('Hola desde un GET')
