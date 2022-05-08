@@ -6,6 +6,7 @@ const app = express()
 var router = express.Router()
 
 app.use(router)
+app.use(bodyParser)
 
 router.get('/message', function(req,res){
     res.send('Hola desde un GET')
@@ -13,6 +14,10 @@ router.get('/message', function(req,res){
 
 router.post('/message', function(req,res){
     res.send('Hola desde un POST')
+})
+
+router.delete('/message', function(req,res){
+    console.log(req.body)
 })
 
 let PORT = 3000
