@@ -10,6 +10,8 @@ app.use(router)
 
 
 router.get('/message', function(req,res){
+    let header = req.headers
+    console.log(header)
     res.send('Hola desde un GET')
 })
 
