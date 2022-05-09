@@ -26,12 +26,15 @@ router.post('/message', function(req,res){
 })
 
 router.delete('/message', function(req,res){
+
+    // se define las variables body y query
     let text = req.body.text
     let query = req.query
+    // se hace print de las variables
     console.log(req.body)
     console.log(req.body.Puta)
     console.log(query)
-    res.send('Eres una '+text)
+    res.status(200).send('Eres una '+text)
 })
 
 let PORT = 3000
