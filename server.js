@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
+const response = require('./network/response')
 const app = express()
 
 var router = express.Router()
@@ -18,7 +18,8 @@ router.get('/message', function(req,res){
 
     // se declara un header de respuesta 
     res.header({"custom-header":"este es un header propio"})
-    res.send('Hola desde un GET')
+
+    response.success(req,res,'Lista de mensajes')
 })
 
 router.post('/message', function(req,res){
