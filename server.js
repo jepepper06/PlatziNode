@@ -18,7 +18,9 @@ router.post('/message', function(req,res){
 })
 
 router.delete('/message', function(req,res){
-    console.log(req.body)
+    let text = req.body.text
+    console.log(text)
+    res.send('Eres una '+text)
 })
 
 let PORT = 3000
