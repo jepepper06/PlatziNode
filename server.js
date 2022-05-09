@@ -5,7 +5,8 @@ const app = express()
 
 var router = express.Router()
 
-app.use(bodyParser.json())
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 app.use(router)
 
 
