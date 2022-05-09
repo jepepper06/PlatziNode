@@ -11,8 +11,13 @@ app.use(router)
 
 
 router.get('/message', function(req,res){
-    let header = req.headers
-    console.log(header)
+
+    // se declara una variable para hacer print
+    let headers = req.headers
+    console.log(headers)
+
+    // se declara un header de respuesta 
+    res.header({"custom-header":"este es un header propio"})
     res.send('Hola desde un GET')
 })
 
@@ -23,7 +28,8 @@ router.post('/message', function(req,res){
 router.delete('/message', function(req,res){
     let text = req.body.text
     let query = req.query
-    console.log(text)
+    console.log(req.body)
+    console.log(req.body.Puta)
     console.log(query)
     res.send('Eres una '+text)
 })
