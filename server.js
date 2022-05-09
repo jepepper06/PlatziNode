@@ -21,7 +21,9 @@ router.post('/message', function(req,res){
 
 router.delete('/message', function(req,res){
     let text = req.body.text
+    let query = req.query
     console.log(text)
+    console.log(query)
     res.send('Eres una '+text)
 })
 
