@@ -22,7 +22,8 @@ router.get('/message', function(req,res){
 })
 
 router.post('/message', function(req,res){
-    res.send('Hola desde un POST')
+
+    res.status(201).send('Hola desde un POST')
 })
 
 router.delete('/message', function(req,res){
@@ -32,7 +33,6 @@ router.delete('/message', function(req,res){
     let query = req.query
     // se hace print de las variables
     console.log(req.body)
-    console.log(req.body.Puta)
     console.log(query)
     res.status(200).send('Eres una '+text)
 })
