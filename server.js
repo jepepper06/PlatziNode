@@ -23,8 +23,13 @@ router.get('/message', function(req,res){
 })
 
 router.post('/message', function(req,res){
+    console.log(req.query)
 
-    res.status(201).send('Hola desde un POST')
+    if(req.query.error == "ok"){
+        response.error(req,res,'Error Simulado',400)
+    }else{
+        response.success(req,res,'No hay error',201)
+    }
 })
 
 router.delete('/message', function(req,res){
