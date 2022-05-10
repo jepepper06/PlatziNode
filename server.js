@@ -43,6 +43,8 @@ router.delete('/message', function(req,res){
     res.status(200).send('Eres una '+text)
 })
 
+
+app.use('/app',express.static('public'))
 let PORT = 3000
 
 app.listen(PORT, ()=>{
