@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const response = require('../../network/response')
+const controller = require('./controller')
 
 router.get('/', function(req,res){
 
@@ -14,13 +15,12 @@ router.get('/', function(req,res){
 })
 
 router.post('/', function(req,res){
-    console.log(req.query)
-
-    if(req.query.error == "ok"){
-        response.error(req,res,'Error inesperado',400, 'Es solo una simulacion de error')
-    }else{
-        response.success(req,res,'Creado correctamente',201)
-    }
+    controller.addMessage(req.body.user, req.body.message)
+        .then((fullMessage)=>{
+            response.success(req,res,fullMessage,201)
+        }).catch(e => {
+            response.error(req,res,'Informacion Invalida',400,'Error en controlador')
+        })
 })
 
 module.exports = router
