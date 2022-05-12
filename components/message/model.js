@@ -16,6 +16,6 @@ const mySchema = new Schema({
     },
 })
 
-const model = mongoose.model('Message',mySchema)
+const model = mongoose.model('Messages',mySchema)
 
 module.exports = model
