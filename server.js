@@ -1,8 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const message = require('./components/message/url')
+const db = require('./db')
+db.conn(message.url())
 
-
+db.conn(message.password)
 const router = require('./network/routes')
 
 app.use(express.json())
