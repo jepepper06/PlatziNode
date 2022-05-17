@@ -21,9 +21,9 @@ function addMessage(user,message){
 
 }
 
-function getMessages(){
+function getMessages(user){
     return new Promise((resolve,reject)=>{
-        resolve(store.list())
+        resolve(store.list(user))
     })
 }
 

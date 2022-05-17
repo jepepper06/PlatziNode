@@ -4,7 +4,8 @@ const response = require('../../network/response')
 const controller = require('./controller')
 
 router.get('/', function(req,res){
-    controller.getMessages()
+    const fiterMessages = req.query.user || null
+    controller.getMessages(fiterMessages)
         .then(messageList => {
             response.success(req,res,messageList,200)
         }).catch(e =>{
