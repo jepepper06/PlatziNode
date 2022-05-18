@@ -1,22 +1,25 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const app = express()
+const server = require('http').Server(app)
+const cors = require('cors')
+
 const message = require('./components/message/url')
 const db = require('./db')
 db.conn(message.url())
-
-db.conn(message.password)
+const socket = require('./socket').connectIO
 const router = require('./network/routes')
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 // app.use(router)
 
+socket(server)
 router(app)
 
 app.use('/app',express.static('public'))
 let PORT = 3000
 
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
     console.log(`SERVIDOR EN EL PUERTO ${PORT}`);
 })
