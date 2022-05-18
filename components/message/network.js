@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const multer = require('multer')
 const response = require('../../network/response')
 const controller = require('./controller')
+const upload = multer({dest:'public/files/',})
 
 router.get('/', function(req,res){
     const fiterMessages = req.query.user || null
@@ -13,12 +15,15 @@ router.get('/', function(req,res){
         })
 })
 
-router.post('/', function(req,res){
-    controller.addMessage(req.body.user, req.body.message)
+router.post('/', upload.single('file'),function(req,res){
+
+    console.log(req.file)
+
+    controller.addMessage(req.body.chat,req.body.user, req.body.message)
         .then((fullMessage)=>{
             response.success(req,res,fullMessage,201)
         }).catch(e => {
-            response.error(req,res,'Informacion Invalida',400,'Error en controlador')
+            response.error(req,res,'Informacion Invalida',400,e)
         })
 })
 

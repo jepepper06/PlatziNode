@@ -15,6 +15,7 @@ async function getMessage(user){
         }
     
         Model.find(filter)
+            .populate('chat')
             .populate('user')
             .exec((error,populated) => {
                 if(error){

@@ -20,4 +20,5 @@ function updateUser(id,name){
 module.exports = {
     add:addUser,
     list:listUsers,
+    update:updateUser,
 }
