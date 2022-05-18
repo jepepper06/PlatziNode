@@ -9,7 +9,7 @@ function addMessage(chat,user,message,file){
         }else{
             let fileUrl = ''
             if(file){
-                fileUrl = 'http://localhost:3000/app/files'
+                fileUrl = `http://localhost:3000/app/files/${file.filename}`
             }
 
             const fullMessage = {
@@ -17,6 +17,7 @@ function addMessage(chat,user,message,file){
                 user: user,
                 message: message,
                 date: new Date(),
+                file:fileUrl
             }
         
             store.add(fullMessage)

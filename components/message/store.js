@@ -1,9 +1,9 @@
 const Model = require('./model')
 
-function addMessage(message){
+async function addMessage(message){
     // list.push(message)
     const myMessage = new Model(message)
-    myMessage.save()
+    return await myMessage.save()
 }
 
 async function getMessage(user){
